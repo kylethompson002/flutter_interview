@@ -9,7 +9,7 @@ final Map<String, bool> _attendingMap = {};
 class EventService {
   ///Fetches all events
   Future<List<EventModel>> fetchEvents() async {
-    final response = await _generateEvents(count: 1000);
+    final response = await _generateEvents(count: 100);
     return response;
   }
 
@@ -23,9 +23,6 @@ class EventService {
     _attendingMap[eventId] = true;
   }
 
-  ///
-  ///
-  ///
   ///private methods
   Future<List<EventModel>> _generateEvents({required int count}) async {
     await Future.delayed(const Duration(seconds: 1));
@@ -64,14 +61,4 @@ class EventService {
   }
 
   String _getEventId({required int index}) => 'event_$index';
-}
-
-EventModel doExpensiveWork(EventModel eventModel) {
-  for (int i = 1; i < 20000; i++) {
-    final x = (123680.0098234 + i) / (1971.0012746 - random.nextDouble());
-    if (x > 10000) {
-      print(x);
-    }
-  }
-  return eventModel;
 }
